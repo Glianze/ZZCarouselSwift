@@ -1,0 +1,6 @@
+framework module Pods_ZZCarouselSwiftDemo {
+  umbrella header "Pods-ZZCarouselSwiftDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
