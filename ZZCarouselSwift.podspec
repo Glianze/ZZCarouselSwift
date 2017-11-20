@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZZCarouselSwift"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "ZZCarouselSwift is infinite shuffling"
 
   # This description is used to generate tags and improve search results.
@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "ZZCarouselSwift/*.swift"
+  s.source_files  = "ZZCarouselView/*.swift"
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
