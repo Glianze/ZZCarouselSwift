@@ -195,7 +195,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         }
     }
     
-    func autoCarouselScrollWithDirection(direction: ZZCarouselScrollDirection) -> Void {
+    private func autoCarouselScrollWithDirection(direction: ZZCarouselScrollDirection) -> Void {
         var contentPoint: CGPoint = CGPoint(x:0.0, y:0.0)
         
         if direction == ZZCarouselScrollDirection.left {
