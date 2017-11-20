@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZZCarouselSwift"
-  s.version      = "1.0.1"
-  s.summary      = "ZZCarouselSwift create new,Cannot reference solution"
+  s.version      = "1.0.2"
+  s.summary      = "ZZCarouselSwift add public class"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -87,12 +87,12 @@ Pod::Spec.new do |s|
   #  giving a folder will include any swift, h, m, mm, c & cpp files.
   #  For header files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
-  #
+  # "ZZCarouselSwift/*.{swift}"
 
   s.source_files  = ['ZZCarouselSwift/*.{swift}']
   #s.exclude_files = "Classes/Exclude"
 
-  # s.public_header_files = "Classes/**/*.h"
+  #s.public_header_files = "ZZCarouselSwift/ZZCarouselView.swift"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -115,7 +115,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  s.frameworks   = 'UIKit'
+  #s.frameworks   = 'UIKit'
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"

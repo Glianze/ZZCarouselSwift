@@ -8,25 +8,25 @@
 
 import UIKit
 
-protocol ZZCarouselDelegate:class {
+public protocol ZZCarouselDelegate:class {
     func carouselForItemCell(carouselView:ZZCarouselView, cell:AnyObject, indexItem:AnyObject) -> Void
     func carouselDidSelectItemAtIndex(carouselView:ZZCarouselView, index: Int) -> Void
 }
 
-enum ZZCarouselPageAlignment{
+public enum ZZCarouselPageAlignment{
     case left
     case right
     case center
 }
 
-enum ZZCarouselScrollDirection{
+public enum ZZCarouselScrollDirection{
     case left
     case right
     case top
     case bottom
 }
 
-class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate {
+open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate {
     
     var _carouselData : [AnyObject]!
     var cellClass : AnyClass!
@@ -45,9 +45,9 @@ class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate
     var this_width : Int!
     var this_height : Int!
     
-    weak var delegate : ZZCarouselDelegate?
+    public weak var delegate : ZZCarouselDelegate?
     
-    init(frame: CGRect, direction: ZZCarouselScrollDirection) {
+    public init(frame: CGRect, direction: ZZCarouselScrollDirection) {
         super.init(frame: frame)
         
         this_width = Int(frame.size.width)
@@ -61,16 +61,16 @@ class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate
         self.makePageControlUI(frame: frame)
     }
     
-    func resettingSelfFrame(frame: CGRect) -> Void {
+    public func resettingSelfFrame(frame: CGRect) -> Void {
         self.frame = CGRect(x: frame.origin.x,y: frame.origin.y, width: CGFloat(this_width), height: CGFloat(this_height))
     }
     
-    func instance() -> Void {
+    public func instance() -> Void {
         autoScrollTimeInterval = 0
         pageControlAlignment = ZZCarouselPageAlignment.center
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -114,19 +114,19 @@ class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate
         self.addSubview(self.pageControl)
     }
     
-    func setCurrentPageColor(color: UIColor) -> Void {
+    public func setCurrentPageColor(color: UIColor) -> Void {
         self.pageControl.currentPageIndicatorTintColor = color
     }
     
-    func setDefaultPageColor(color: UIColor) -> Void {
+    public func setDefaultPageColor(color: UIColor) -> Void {
         self.pageControl.pageIndicatorTintColor = color
     }
     
-    func setPageControlAlignment(alignment: ZZCarouselPageAlignment) -> Void {
+    public func setPageControlAlignment(alignment: ZZCarouselPageAlignment) -> Void {
         pageControlAlignment = alignment
     }
     
-    func setHiddenPageControl(hidden: Bool) -> Void {
+    public func setHiddenPageControl(hidden: Bool) -> Void {
         pageControl.isHidden = hidden
     }
     
@@ -143,7 +143,7 @@ class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate
         pageControl.bounds = CGRect(x: CGFloat(page_x), y: pageControl.bounds.origin.y,width: pageControl.bounds.size.width, height: pageControl.bounds.size.height)
     }
     
-    func setCarouselData(carouselData: [AnyObject]) -> Void {
+    public func setCarouselData(carouselData: [AnyObject]) -> Void {
         if !carouselData.isEmpty {
             _carouselData = self.remakeCarouselData(data: carouselData)
             self.coreView.reloadData()
@@ -168,12 +168,12 @@ class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate
         return carousel_data
     }
     
-    func registerCarouselCell(cellClass: AnyClass) -> Void {
+    public func registerCarouselCell(cellClass: AnyClass) -> Void {
         self.cellClass = cellClass
         coreView.register(self.cellClass, forCellWithReuseIdentifier: NSStringFromClass(self.cellClass))
     }
     
-    func setAutoScrollTimeInterval(timeInterval: Float) -> Void {
+    public func setAutoScrollTimeInterval(timeInterval: Float) -> Void {
         self.autoScrollTimeInterval = timeInterval
         self.createTimer()
     }
@@ -210,25 +210,25 @@ class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate
         self.coreView.setContentOffset(contentPoint, animated: true)
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _carouselData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(cellClass), for: indexPath)
         self.delegate?.carouselForItemCell(carouselView: self, cell: cell, indexItem: self._carouselData[indexPath.row])
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.carouselDidSelectItemAtIndex(carouselView: self, index: indexPath.row-1)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.pageControl.currentPage = fetchCurrentPage();
         if scrollDirection == ZZCarouselScrollDirection.left || scrollDirection == ZZCarouselScrollDirection.right {
             self.carouselHorizontalDidScroll(scrollView: scrollView)
@@ -278,12 +278,12 @@ class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate
         return page
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         timer.invalidate()
         timer = nil
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if autoScrollTimeInterval != 0.0 {
             self.createTimer()
         }
