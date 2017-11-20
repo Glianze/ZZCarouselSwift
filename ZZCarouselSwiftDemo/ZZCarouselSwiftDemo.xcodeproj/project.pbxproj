@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		88B9A0C2544826929FE2E99C /* Pods_ZZCarouselSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4DACECC392A71845A690FC /* Pods_ZZCarouselSwiftDemo.framework */; };
+		A431B5461FC2B305004DD20D /* ZZCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A431B5451FC2B305004DD20D /* ZZCarouselView.swift */; };
 		A4ECFCF11FBC34530070484E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFCF01FBC34530070484E /* AppDelegate.swift */; };
 		A4ECFCF31FBC34530070484E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFCF21FBC34530070484E /* ViewController.swift */; };
 		A4ECFCF61FBC34530070484E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4ECFCF41FBC34530070484E /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		A4ECFCFB1FBC34530070484E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4ECFCF91FBC34530070484E /* LaunchScreen.storyboard */; };
 		A4ECFD061FBC34530070484E /* ZZCarouselSwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD051FBC34530070484E /* ZZCarouselSwiftDemoTests.swift */; };
 		A4ECFD111FBC34540070484E /* ZZCarouselSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD101FBC34540070484E /* ZZCarouselSwiftDemoUITests.swift */; };
-		A4ECFD201FBC34E20070484E /* ZZCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD1F1FBC34E20070484E /* ZZCarouselView.swift */; };
 		A4ECFD291FBC35090070484E /* Example3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD211FBC35080070484E /* Example3ViewController.swift */; };
 		A4ECFD2A1FBC35090070484E /* Example1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD221FBC35080070484E /* Example1Cell.swift */; };
 		A4ECFD2B1FBC35090070484E /* Example1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD231FBC35080070484E /* Example1ViewController.swift */; };
@@ -52,6 +52,7 @@
 /* Begin PBXFileReference section */
 		15415EC4440A2478ACFA0A90 /* Pods-ZZCarouselSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZCarouselSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZCarouselSwiftDemo/Pods-ZZCarouselSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4C4DACECC392A71845A690FC /* Pods_ZZCarouselSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZCarouselSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A431B5451FC2B305004DD20D /* ZZCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZCarouselView.swift; sourceTree = "<group>"; };
 		A4ECFCED1FBC34530070484E /* ZZCarouselSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZCarouselSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4ECFCF01FBC34530070484E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4ECFCF21FBC34530070484E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		A4ECFD0C1FBC34540070484E /* ZZCarouselSwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZZCarouselSwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4ECFD101FBC34540070484E /* ZZCarouselSwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZCarouselSwiftDemoUITests.swift; sourceTree = "<group>"; };
 		A4ECFD121FBC34540070484E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A4ECFD1F1FBC34E20070484E /* ZZCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZCarouselView.swift; sourceTree = "<group>"; };
 		A4ECFD211FBC35080070484E /* Example3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example3ViewController.swift; sourceTree = "<group>"; };
 		A4ECFD221FBC35080070484E /* Example1Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example1Cell.swift; sourceTree = "<group>"; };
 		A4ECFD231FBC35080070484E /* Example1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example1ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +118,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A431B5441FC2B305004DD20D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A431B5451FC2B305004DD20D /* ZZCarouselView.swift */,
+			);
+			name = Sources;
+			path = ../../Sources;
+			sourceTree = "<group>";
+		};
 		A4ECFCE41FBC34530070484E = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +152,7 @@
 		A4ECFCEF1FBC34530070484E /* ZZCarouselSwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A431B5441FC2B305004DD20D /* Sources */,
 				A4ECFD311FBC35520070484E /* image */,
 				A4ECFD221FBC35080070484E /* Example1Cell.swift */,
 				A4ECFD231FBC35080070484E /* Example1ViewController.swift */,
@@ -152,7 +162,6 @@
 				A4ECFD211FBC35080070484E /* Example3ViewController.swift */,
 				A4ECFD271FBC35090070484E /* ExampleCell.swift */,
 				A4ECFD281FBC35090070484E /* ExampleViewController.swift */,
-				A4ECFD1E1FBC34E20070484E /* ZZCarouselSwift */,
 				A4ECFCF01FBC34530070484E /* AppDelegate.swift */,
 				A4ECFCF21FBC34530070484E /* ViewController.swift */,
 				A4ECFCF41FBC34530070484E /* Main.storyboard */,
@@ -179,15 +188,6 @@
 				A4ECFD121FBC34540070484E /* Info.plist */,
 			);
 			path = ZZCarouselSwiftDemoUITests;
-			sourceTree = "<group>";
-		};
-		A4ECFD1E1FBC34E20070484E /* ZZCarouselSwift */ = {
-			isa = PBXGroup;
-			children = (
-				A4ECFD1F1FBC34E20070484E /* ZZCarouselView.swift */,
-			);
-			name = ZZCarouselSwift;
-			path = ../../ZZCarouselSwift;
 			sourceTree = "<group>";
 		};
 		A4ECFD311FBC35520070484E /* image */ = {
@@ -403,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4ECFD301FBC35090070484E /* ExampleViewController.swift in Sources */,
+				A431B5461FC2B305004DD20D /* ZZCarouselView.swift in Sources */,
 				A4ECFD2F1FBC35090070484E /* ExampleCell.swift in Sources */,
 				A4ECFD2E1FBC35090070484E /* Example3Cell.swift in Sources */,
 				A4ECFCF31FBC34530070484E /* ViewController.swift in Sources */,
@@ -410,7 +411,6 @@
 				A4ECFD2C1FBC35090070484E /* Example2ViewController.swift in Sources */,
 				A4ECFD2D1FBC35090070484E /* Example2Cell.swift in Sources */,
 				A4ECFCF11FBC34530070484E /* AppDelegate.swift in Sources */,
-				A4ECFD201FBC34E20070484E /* ZZCarouselView.swift in Sources */,
 				A4ECFD2A1FBC35090070484E /* Example1Cell.swift in Sources */,
 				A4ECFD2B1FBC35090070484E /* Example1ViewController.swift in Sources */,
 			);
