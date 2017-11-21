@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZZCarouselSwift"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "ZZCarouselSwift add open class and public func"
 
   # This description is used to generate tags and improve search results.

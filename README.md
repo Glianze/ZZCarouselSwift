@@ -73,7 +73,7 @@ carousel.setCarouselData(carouselData: data as [AnyObject])
 ### 安装方法
 
 - 手动安装：拖拽ZZCarouselSwift文件夹到工程内即可
-- 自动安装：pod 'ZZCarouselSwift', '~> 1.0.0'
+- 自动安装：pod 'ZZCarouselSwift', '~> 1.0.5'
 
 ### PS
 
