@@ -39,11 +39,11 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     var currentPageColor : UIColor?
     var defaultPageColor : UIColor!
     
-    var coreView : UICollectionView!
-    var pageControl : UIPageControl!
+    private var coreView : UICollectionView!
+    private var pageControl : UIPageControl!
     var backgroundView : UIImageView!
-    var this_width : Int!
-    var this_height : Int!
+    private var this_width : Int!
+    private var this_height : Int!
     
     public weak var delegate : ZZCarouselDelegate?
     
@@ -61,11 +61,11 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.makePageControlUI(frame: frame)
     }
     
-    public func resettingSelfFrame(frame: CGRect) -> Void {
+    private func resettingSelfFrame(frame: CGRect) -> Void {
         self.frame = CGRect(x: frame.origin.x,y: frame.origin.y, width: CGFloat(this_width), height: CGFloat(this_height))
     }
     
-    public func instance() -> Void {
+    private func instance() -> Void {
         autoScrollTimeInterval = 0
         pageControlAlignment = ZZCarouselPageAlignment.center
     }
@@ -74,7 +74,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         super.init(coder: aDecoder)
     }
     
-    func makeCoreUI(direction: ZZCarouselScrollDirection) -> Void {
+    private func makeCoreUI(direction: ZZCarouselScrollDirection) -> Void {
         backgroundView = UIImageView.init(frame: CGRect(x:0.0 ,y: 0.0, width: CGFloat(this_width), height: CGFloat(this_height)))
         backgroundView.layer.masksToBounds = true
         backgroundView.layer.borderWidth = 0
@@ -108,7 +108,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.addSubview(self.coreView)
     }
     
-    func makePageControlUI(frame: CGRect) -> Void {
+    private func makePageControlUI(frame: CGRect) -> Void {
         self.pageControl = UIPageControl.init(frame: CGRect(x:0.0 ,y: CGFloat(this_height - 20), width: CGFloat(this_width), height: 20.0))
         self.pageControl.backgroundColor = UIColor.clear
         self.addSubview(self.pageControl)
@@ -130,7 +130,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         pageControl.isHidden = hidden
     }
     
-    func settingPageControlAlignment() -> Void {
+    private func settingPageControlAlignment() -> Void {
         let pointSize : CGSize = pageControl.size(forNumberOfPages: _carouselData.count)
         var page_x : Float = 0.0
         if (pageControlAlignment == ZZCarouselPageAlignment.left) {
@@ -158,7 +158,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         }
     }
     
-    func remakeCarouselData(data: [AnyObject]) -> [AnyObject] {
+    private func remakeCarouselData(data: [AnyObject]) -> [AnyObject] {
         var carousel_data : [AnyObject] = [AnyObject]()
         carousel_data.append(data.last!)
         for item in data {
@@ -178,7 +178,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.createTimer()
     }
     
-    func createTimer() -> Void {
+    private func createTimer() -> Void {
         timer = Timer.scheduledTimer(timeInterval: Double(self.autoScrollTimeInterval), target: self, selector: #selector(self.autoCarouselScroll), userInfo: nil, repeats: true)
         RunLoop.main.add(timer!, forMode:RunLoopMode.commonModes)
     }
@@ -237,7 +237,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         }
     }
     
-    func carouselHorizontalDidScroll(scrollView: UIScrollView) -> Void {
+    private func carouselHorizontalDidScroll(scrollView: UIScrollView) -> Void {
         if scrollView.contentOffset.x <= 0 {
             scrollView.contentOffset = CGPoint(x: Int(this_width) * (_carouselData.count - 2), y: 0);
         } else if Float(scrollView.contentOffset.x) >= Float(this_width) * (Float(_carouselData.count - 1)) {
@@ -245,7 +245,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         }
     }
     
-    func carouselVerticalDidScroll(scrollView: UIScrollView) -> Void {
+    private func carouselVerticalDidScroll(scrollView: UIScrollView) -> Void {
         if scrollView.contentOffset.y <= 0 {
             scrollView.contentOffset = CGPoint(x: 0, y: this_height * (_carouselData.count - 2))
         } else if Float(scrollView.contentOffset.y) >= Float(this_height) * (Float(_carouselData.count - 1)) {
@@ -253,7 +253,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         }
     }
     
-    func fetchCurrentPage() -> Int {
+    private func fetchCurrentPage() -> Int {
         
         var contentOffset:CGFloat = 0
         var widthOrHeight:CGFloat = 0
