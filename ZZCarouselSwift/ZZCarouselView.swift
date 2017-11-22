@@ -268,10 +268,9 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         
         let page : Int = Int((contentOffset + widthOrHeight * CGFloat(0.5)) / widthOrHeight) - 1;
         
-        if contentOffset > widthOrHeight * CGFloat(_carouselData.count - 2) {
+        if contentOffset > widthOrHeight * CGFloat(_carouselData.count - 2) + widthOrHeight * 0.5 {
             return 0
-        }else if self.coreView.contentOffset.x < 0 {
-            self.pageControl.currentPage = _carouselData.count - 3
+        }else if contentOffset < widthOrHeight * 0.5 {
             return _carouselData.count - 3
         }
         
