@@ -6,17 +6,18 @@
 
 ### 轮播器优势：
 
-- 可以自定义Cell
-- 可以各种自定义，支持图文轮播。以及各种不服轮播！
+- 基于UICollectionView，真无限轮播器
+- 自定义UICollectionViewCell方式定制轮播器。
+- 可支持纯图片轮播，纯文字轮播，以及各种自定义Cell形式轮播。
 - 支持Kingfisher加载图片
 - 支持cocoapods
-- 基于UICollectionView，无限轮播器
 - 点击轮播器delegte方法执行
+- Demo中添加仿淘宝样式的效果
 
 ### 方法说明
 
 ```objective-c
-// 注册UICollectionviewCell，自定义cell
+// 注册UICollectionviewCell，PS：必须实现的方法，如不实现肯定Crash
 registerCarouselCell(cellClass: AnyClass)
 // 设置自动滚动间隔时间
 setAutoScrollTimeInterval(timeInterval: Float)
@@ -28,8 +29,10 @@ setDefaultPageColor(color: UIColor)
 setCurrentPageColor(color: UIColor)
 // UIPageControl 对齐方式 ， 枚举类型：左、中、右
 setPageControlAlignment(alignment: ZZCarouselPageAlignment)
-// 是佛隐藏PageControl
+// 是否隐藏PageControl
 setHiddenPageControl(hidden: Bool)
+// 是否关闭滚动手势，一般在纯文字的情况下调用此方法
+setDisableScroll(disableScroll: Bool)
 ```
 
 ### 枚举说明
@@ -56,7 +59,7 @@ ZZCarouselScrollDirection  Carousel滚动方向设置
 ///   - frame: <#frame description#>
 ///   - direction: 指定滚动滚动方向
 let carousel = ZZCarouselView.init(frame: CGRect(x: 0, y: 64, width: self.view.frame.size.width, height:self.view.frame.size.height / 3), direction: ZZCarouselScrollDirection.left)
-// 注册自定义的Cell
+// 注册自定义的Cell，PS：非常有必要，一定要实现的方法
 carousel.registerCarouselCell(cellClass: Example1Cell.classForCoder())
 carousel.setCurrentPageColor(color: UIColor.red)
 carousel.setDefaultPageColor(color: UIColor.yellow)
