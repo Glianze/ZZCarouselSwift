@@ -16,6 +16,11 @@ class Example2ViewController: UIViewController,ZZCarouselDelegate {
         self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
         
+        self.textCarouselDemo()
+        
+    }
+    
+    func textCarouselDemo() -> Void {
         let data = ["昨天晴天转多云0℃-100℃", "今日晴天转多云0℃-100℃", "明天晴天转多云0℃-100℃", "后天晴天转多云0℃-100℃"]
         
         let carousel = ZZCarouselView.init(frame: CGRect(x: 40, y: 84, width: self.view.frame.size.width - 80, height:40.0), direction: ZZCarouselScrollDirection.left)
@@ -26,6 +31,7 @@ class Example2ViewController: UIViewController,ZZCarouselDelegate {
         carousel.setAutoScrollTimeInterval(timeInterval: 3)
         carousel.setPageControlAlignment(alignment: ZZCarouselPageAlignment.right)
         carousel.setHiddenPageControl(hidden: true)
+        carousel.setDisableScroll(disableScroll: false)
         self.view.addSubview(carousel)
         carousel.setCarouselData(carouselData: data as [AnyObject])
         
@@ -37,9 +43,9 @@ class Example2ViewController: UIViewController,ZZCarouselDelegate {
         carousel1.setAutoScrollTimeInterval(timeInterval: 3)
         carousel1.setPageControlAlignment(alignment: ZZCarouselPageAlignment.right)
         carousel1.setHiddenPageControl(hidden: true)
+        carousel1.setDisableScroll(disableScroll: false)
         self.view.addSubview(carousel1)
         carousel1.setCarouselData(carouselData: data as [AnyObject])
-        
     }
     
     func carouselForItemCell(carouselView: ZZCarouselView, cell: AnyObject, indexItem: AnyObject) {
@@ -49,7 +55,10 @@ class Example2ViewController: UIViewController,ZZCarouselDelegate {
     
     func carouselDidSelectItemAtIndex(carouselView: ZZCarouselView, index: Int) {
         
+        print(index)
+        
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

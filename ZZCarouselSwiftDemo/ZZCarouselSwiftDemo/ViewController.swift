@@ -28,11 +28,11 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return section == 0 ? 3 : 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,19 +40,29 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         if cell == nil {
             cell = UITableViewCell.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
         }
-        if indexPath.row == 0 {
-            cell?.textLabel?.text = "本地图片"
-            cell?.detailTextLabel?.text = "Class-:-ExampleViewController"
-        } else if indexPath.row == 1 {
-            cell?.textLabel?.text = "使用Kingfisher加载图片"
-            cell?.detailTextLabel?.text = "Class-:-Example1ViewController"
-        } else if indexPath.row == 2{
-            cell?.textLabel?.text = "纯文字轮播"
-            cell?.detailTextLabel?.text = "Class-:-Example2ViewController"
-        } else if indexPath.row == 3{
-            cell?.textLabel?.text = "自定义cell轮播"
-            cell?.detailTextLabel?.text = "Class-:-Example3ViewController"
+        
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                cell?.textLabel?.text = "本地图片"
+                cell?.detailTextLabel?.text = "Class-:-ExampleViewController"
+            } else if indexPath.row == 1 {
+                cell?.textLabel?.text = "使用Kingfisher加载图片"
+                cell?.detailTextLabel?.text = "Class-:-Example1ViewController"
+            } else if indexPath.row == 2{
+                cell?.textLabel?.text = "自定义cell轮播"
+                cell?.detailTextLabel?.text = "Class-:-Example3ViewController"
+            }
+        }else {
+            if indexPath.row == 0{
+                cell?.textLabel?.text = "纯文字轮播"
+                cell?.detailTextLabel?.text = "Class-:-Example2ViewController"
+            } else if indexPath.row == 1{
+                cell?.textLabel?.text = "仿淘宝头条样式"
+                cell?.detailTextLabel?.text = "Class-:-Example4ViewController"
+            }
         }
+        
+        
         
         
         return cell!
@@ -63,19 +73,29 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let ex = ExampleViewController()
-            self.navigationController?.pushViewController(ex, animated: true)
-        }else if indexPath.row == 1 {
-            let ex1 = Example1ViewController()
-            self.navigationController?.pushViewController(ex1, animated: true)
-        }else if indexPath.row == 2 {
-            let ex1 = Example2ViewController()
-            self.navigationController?.pushViewController(ex1, animated: true)
-        }else if indexPath.row == 3 {
-            let ex1 = Example3ViewController()
-            self.navigationController?.pushViewController(ex1, animated: true)
+        
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let ex = ExampleViewController()
+                self.navigationController?.pushViewController(ex, animated: true)
+            }else if indexPath.row == 1 {
+                let ex1 = Example1ViewController()
+                self.navigationController?.pushViewController(ex1, animated: true)
+            }else if indexPath.row == 2 {
+                let ex1 = Example3ViewController()
+                self.navigationController?.pushViewController(ex1, animated: true)
+            }
+        }else {
+            if indexPath.row == 0 {
+                let ex1 = Example2ViewController()
+                self.navigationController?.pushViewController(ex1, animated: true)
+            }else if indexPath.row == 1 {
+                let ex1 = Example4ViewController()
+                self.navigationController?.pushViewController(ex1, animated: true)
+            }
         }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

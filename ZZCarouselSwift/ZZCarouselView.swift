@@ -105,6 +105,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         } else {
             // Fallback on earlier versions
         }
+        self.coreView.isScrollEnabled = true
         self.addSubview(self.coreView)
     }
     
@@ -128,6 +129,10 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     
     public func setHiddenPageControl(hidden: Bool) -> Void {
         pageControl.isHidden = hidden
+    }
+    
+    public func setDisableScroll(disableScroll: Bool) -> Void {
+        self.coreView.isScrollEnabled = disableScroll
     }
     
     private func settingPageControlAlignment() -> Void {

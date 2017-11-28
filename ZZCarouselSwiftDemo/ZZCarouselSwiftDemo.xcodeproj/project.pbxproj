@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		88B9A0C2544826929FE2E99C /* Pods_ZZCarouselSwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4DACECC392A71845A690FC /* Pods_ZZCarouselSwiftDemo.framework */; };
 		A431B54F1FC2BC1F004DD20D /* ZZCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A431B54E1FC2BC1F004DD20D /* ZZCarouselView.swift */; };
+		A45242A51FCD150E000A75EA /* tb_info_image.png in Resources */ = {isa = PBXBuildFile; fileRef = A45242A31FCD150E000A75EA /* tb_info_image.png */; };
+		A45242A61FCD150E000A75EA /* jd_info_image.png in Resources */ = {isa = PBXBuildFile; fileRef = A45242A41FCD150E000A75EA /* jd_info_image.png */; };
+		A45242B31FCD1700000A75EA /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242AA1FCD1700000A75EA /* ExampleViewController.swift */; };
+		A45242B41FCD1700000A75EA /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242AB1FCD1700000A75EA /* ExampleCell.swift */; };
+		A45242B51FCD1700000A75EA /* Example1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242AC1FCD1700000A75EA /* Example1Cell.swift */; };
+		A45242B61FCD1700000A75EA /* Example4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242AD1FCD1700000A75EA /* Example4ViewController.swift */; };
+		A45242B71FCD1700000A75EA /* Example2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242AE1FCD1700000A75EA /* Example2Cell.swift */; };
+		A45242B81FCD1700000A75EA /* Example1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242AF1FCD1700000A75EA /* Example1ViewController.swift */; };
+		A45242B91FCD1700000A75EA /* Example3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242B01FCD1700000A75EA /* Example3ViewController.swift */; };
+		A45242BA1FCD1700000A75EA /* Example2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242B11FCD1700000A75EA /* Example2ViewController.swift */; };
+		A45242BB1FCD1700000A75EA /* Example3Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242B21FCD1700000A75EA /* Example3Cell.swift */; };
+		A45242BD1FCD2BEA000A75EA /* Example4TaobaoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45242BC1FCD2BEA000A75EA /* Example4TaobaoCell.swift */; };
 		A4ECFCF11FBC34530070484E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFCF01FBC34530070484E /* AppDelegate.swift */; };
 		A4ECFCF31FBC34530070484E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFCF21FBC34530070484E /* ViewController.swift */; };
 		A4ECFCF61FBC34530070484E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4ECFCF41FBC34530070484E /* Main.storyboard */; };
@@ -16,14 +28,6 @@
 		A4ECFCFB1FBC34530070484E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4ECFCF91FBC34530070484E /* LaunchScreen.storyboard */; };
 		A4ECFD061FBC34530070484E /* ZZCarouselSwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD051FBC34530070484E /* ZZCarouselSwiftDemoTests.swift */; };
 		A4ECFD111FBC34540070484E /* ZZCarouselSwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD101FBC34540070484E /* ZZCarouselSwiftDemoUITests.swift */; };
-		A4ECFD291FBC35090070484E /* Example3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD211FBC35080070484E /* Example3ViewController.swift */; };
-		A4ECFD2A1FBC35090070484E /* Example1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD221FBC35080070484E /* Example1Cell.swift */; };
-		A4ECFD2B1FBC35090070484E /* Example1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD231FBC35080070484E /* Example1ViewController.swift */; };
-		A4ECFD2C1FBC35090070484E /* Example2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD241FBC35090070484E /* Example2ViewController.swift */; };
-		A4ECFD2D1FBC35090070484E /* Example2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD251FBC35090070484E /* Example2Cell.swift */; };
-		A4ECFD2E1FBC35090070484E /* Example3Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD261FBC35090070484E /* Example3Cell.swift */; };
-		A4ECFD2F1FBC35090070484E /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD271FBC35090070484E /* ExampleCell.swift */; };
-		A4ECFD301FBC35090070484E /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ECFD281FBC35090070484E /* ExampleViewController.swift */; };
 		A4ECFD381FBC35520070484E /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = A4ECFD321FBC35520070484E /* placeholder.png */; };
 		A4ECFD391FBC35520070484E /* zz1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4ECFD331FBC35520070484E /* zz1.jpg */; };
 		A4ECFD3A1FBC35520070484E /* zz2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4ECFD341FBC35520070484E /* zz2.jpg */; };
@@ -53,6 +57,18 @@
 		15415EC4440A2478ACFA0A90 /* Pods-ZZCarouselSwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZZCarouselSwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZZCarouselSwiftDemo/Pods-ZZCarouselSwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
 		4C4DACECC392A71845A690FC /* Pods_ZZCarouselSwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZZCarouselSwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A431B54E1FC2BC1F004DD20D /* ZZCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZCarouselView.swift; sourceTree = "<group>"; };
+		A45242A31FCD150E000A75EA /* tb_info_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb_info_image.png; sourceTree = "<group>"; };
+		A45242A41FCD150E000A75EA /* jd_info_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jd_info_image.png; sourceTree = "<group>"; };
+		A45242AA1FCD1700000A75EA /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		A45242AB1FCD1700000A75EA /* ExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
+		A45242AC1FCD1700000A75EA /* Example1Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example1Cell.swift; sourceTree = "<group>"; };
+		A45242AD1FCD1700000A75EA /* Example4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example4ViewController.swift; sourceTree = "<group>"; };
+		A45242AE1FCD1700000A75EA /* Example2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example2Cell.swift; sourceTree = "<group>"; };
+		A45242AF1FCD1700000A75EA /* Example1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example1ViewController.swift; sourceTree = "<group>"; };
+		A45242B01FCD1700000A75EA /* Example3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example3ViewController.swift; sourceTree = "<group>"; };
+		A45242B11FCD1700000A75EA /* Example2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example2ViewController.swift; sourceTree = "<group>"; };
+		A45242B21FCD1700000A75EA /* Example3Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example3Cell.swift; sourceTree = "<group>"; };
+		A45242BC1FCD2BEA000A75EA /* Example4TaobaoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example4TaobaoCell.swift; sourceTree = "<group>"; };
 		A4ECFCED1FBC34530070484E /* ZZCarouselSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZCarouselSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4ECFCF01FBC34530070484E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4ECFCF21FBC34530070484E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,14 +82,6 @@
 		A4ECFD0C1FBC34540070484E /* ZZCarouselSwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZZCarouselSwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4ECFD101FBC34540070484E /* ZZCarouselSwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZZCarouselSwiftDemoUITests.swift; sourceTree = "<group>"; };
 		A4ECFD121FBC34540070484E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A4ECFD211FBC35080070484E /* Example3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example3ViewController.swift; sourceTree = "<group>"; };
-		A4ECFD221FBC35080070484E /* Example1Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example1Cell.swift; sourceTree = "<group>"; };
-		A4ECFD231FBC35080070484E /* Example1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example1ViewController.swift; sourceTree = "<group>"; };
-		A4ECFD241FBC35090070484E /* Example2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example2ViewController.swift; sourceTree = "<group>"; };
-		A4ECFD251FBC35090070484E /* Example2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example2Cell.swift; sourceTree = "<group>"; };
-		A4ECFD261FBC35090070484E /* Example3Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example3Cell.swift; sourceTree = "<group>"; };
-		A4ECFD271FBC35090070484E /* ExampleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
-		A4ECFD281FBC35090070484E /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		A4ECFD321FBC35520070484E /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		A4ECFD331FBC35520070484E /* zz1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zz1.jpg; sourceTree = "<group>"; };
 		A4ECFD341FBC35520070484E /* zz2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zz2.jpg; sourceTree = "<group>"; };
@@ -127,6 +135,23 @@
 			path = ../../ZZCarouselSwift;
 			sourceTree = "<group>";
 		};
+		A45242A91FCD1700000A75EA /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				A45242AA1FCD1700000A75EA /* ExampleViewController.swift */,
+				A45242AB1FCD1700000A75EA /* ExampleCell.swift */,
+				A45242AF1FCD1700000A75EA /* Example1ViewController.swift */,
+				A45242AC1FCD1700000A75EA /* Example1Cell.swift */,
+				A45242B11FCD1700000A75EA /* Example2ViewController.swift */,
+				A45242AE1FCD1700000A75EA /* Example2Cell.swift */,
+				A45242B01FCD1700000A75EA /* Example3ViewController.swift */,
+				A45242B21FCD1700000A75EA /* Example3Cell.swift */,
+				A45242AD1FCD1700000A75EA /* Example4ViewController.swift */,
+				A45242BC1FCD2BEA000A75EA /* Example4TaobaoCell.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		A4ECFCE41FBC34530070484E = {
 			isa = PBXGroup;
 			children = (
@@ -152,18 +177,11 @@
 		A4ECFCEF1FBC34530070484E /* ZZCarouselSwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
-				A431B54D1FC2BC1F004DD20D /* ZZCarouselSwift */,
-				A4ECFD311FBC35520070484E /* image */,
-				A4ECFD221FBC35080070484E /* Example1Cell.swift */,
-				A4ECFD231FBC35080070484E /* Example1ViewController.swift */,
-				A4ECFD251FBC35090070484E /* Example2Cell.swift */,
-				A4ECFD241FBC35090070484E /* Example2ViewController.swift */,
-				A4ECFD261FBC35090070484E /* Example3Cell.swift */,
-				A4ECFD211FBC35080070484E /* Example3ViewController.swift */,
-				A4ECFD271FBC35090070484E /* ExampleCell.swift */,
-				A4ECFD281FBC35090070484E /* ExampleViewController.swift */,
 				A4ECFCF01FBC34530070484E /* AppDelegate.swift */,
 				A4ECFCF21FBC34530070484E /* ViewController.swift */,
+				A45242A91FCD1700000A75EA /* Demo */,
+				A4ECFD311FBC35520070484E /* image */,
+				A431B54D1FC2BC1F004DD20D /* ZZCarouselSwift */,
 				A4ECFCF41FBC34530070484E /* Main.storyboard */,
 				A4ECFCF71FBC34530070484E /* Assets.xcassets */,
 				A4ECFCF91FBC34530070484E /* LaunchScreen.storyboard */,
@@ -193,6 +211,8 @@
 		A4ECFD311FBC35520070484E /* image */ = {
 			isa = PBXGroup;
 			children = (
+				A45242A41FCD150E000A75EA /* jd_info_image.png */,
+				A45242A31FCD150E000A75EA /* tb_info_image.png */,
 				A4ECFD321FBC35520070484E /* placeholder.png */,
 				A4ECFD331FBC35520070484E /* zz1.jpg */,
 				A4ECFD341FBC35520070484E /* zz2.jpg */,
@@ -323,11 +343,13 @@
 			files = (
 				A4ECFD3B1FBC35520070484E /* zz3.jpg in Resources */,
 				A4ECFD3A1FBC35520070484E /* zz2.jpg in Resources */,
+				A45242A61FCD150E000A75EA /* jd_info_image.png in Resources */,
 				A4ECFD391FBC35520070484E /* zz1.jpg in Resources */,
 				A4ECFCFB1FBC34530070484E /* LaunchScreen.storyboard in Resources */,
 				A4ECFD381FBC35520070484E /* placeholder.png in Resources */,
 				A4ECFCF81FBC34530070484E /* Assets.xcassets in Resources */,
 				A4ECFD3D1FBC35520070484E /* zz5.jpg in Resources */,
+				A45242A51FCD150E000A75EA /* tb_info_image.png in Resources */,
 				A4ECFD3C1FBC35520070484E /* zz4.jpg in Resources */,
 				A4ECFCF61FBC34530070484E /* Main.storyboard in Resources */,
 			);
@@ -402,17 +424,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4ECFD301FBC35090070484E /* ExampleViewController.swift in Sources */,
+				A45242BB1FCD1700000A75EA /* Example3Cell.swift in Sources */,
+				A45242B41FCD1700000A75EA /* ExampleCell.swift in Sources */,
 				A431B54F1FC2BC1F004DD20D /* ZZCarouselView.swift in Sources */,
-				A4ECFD2F1FBC35090070484E /* ExampleCell.swift in Sources */,
-				A4ECFD2E1FBC35090070484E /* Example3Cell.swift in Sources */,
+				A45242B31FCD1700000A75EA /* ExampleViewController.swift in Sources */,
+				A45242BA1FCD1700000A75EA /* Example2ViewController.swift in Sources */,
+				A45242B71FCD1700000A75EA /* Example2Cell.swift in Sources */,
+				A45242B61FCD1700000A75EA /* Example4ViewController.swift in Sources */,
+				A45242BD1FCD2BEA000A75EA /* Example4TaobaoCell.swift in Sources */,
 				A4ECFCF31FBC34530070484E /* ViewController.swift in Sources */,
-				A4ECFD291FBC35090070484E /* Example3ViewController.swift in Sources */,
-				A4ECFD2C1FBC35090070484E /* Example2ViewController.swift in Sources */,
-				A4ECFD2D1FBC35090070484E /* Example2Cell.swift in Sources */,
+				A45242B51FCD1700000A75EA /* Example1Cell.swift in Sources */,
+				A45242B91FCD1700000A75EA /* Example3ViewController.swift in Sources */,
 				A4ECFCF11FBC34530070484E /* AppDelegate.swift in Sources */,
-				A4ECFD2A1FBC35090070484E /* Example1Cell.swift in Sources */,
-				A4ECFD2B1FBC35090070484E /* Example1ViewController.swift in Sources */,
+				A45242B81FCD1700000A75EA /* Example1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +604,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2UTB3NPRNB;
 				INFOPLIST_FILE = ZZCarouselSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.glianze.ZZCarouselSwiftDemo;
@@ -595,6 +620,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2UTB3NPRNB;
 				INFOPLIST_FILE = ZZCarouselSwiftDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.glianze.ZZCarouselSwiftDemo;
