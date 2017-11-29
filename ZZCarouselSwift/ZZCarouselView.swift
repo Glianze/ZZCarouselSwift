@@ -28,16 +28,15 @@ public enum ZZCarouselScrollDirection{
 
 open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate {
     
-    var _carouselData : [AnyObject]!
-    var cellClass : AnyClass!
-    var timer : Timer!
-    var autoScrollTimeInterval : Float!
-    var scrollDirection : ZZCarouselScrollDirection!
-    var pageControlAlignment : ZZCarouselPageAlignment!
-    var hiddenPageControl : Bool!
-    
-    var currentPageColor : UIColor?
-    var defaultPageColor : UIColor!
+    private var _carouselData : [AnyObject]!
+    private var cellClass : AnyClass!
+    private var timer : Timer?
+    private var autoScrollTimeInterval : Float!
+    private var scrollDirection : ZZCarouselScrollDirection!
+    private var pageControlAlignment : ZZCarouselPageAlignment!
+    private var hiddenPageControl : Bool!
+    private var currentPageColor : UIColor?
+    private var defaultPageColor : UIColor!
     
     private var coreView : UICollectionView!
     private var pageControl : UIPageControl!
@@ -78,7 +77,6 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         backgroundView = UIImageView.init(frame: CGRect(x:0.0 ,y: 0.0, width: CGFloat(this_width), height: CGFloat(this_height)))
         backgroundView.layer.masksToBounds = true
         backgroundView.layer.borderWidth = 0
-        backgroundView.backgroundColor = UIColor.red
         self.backgroundView.contentMode = UIViewContentMode.scaleToFill
         self.addSubview(backgroundView)
         
@@ -115,6 +113,16 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.addSubview(self.pageControl)
     }
     
+    public func registerCarouselCell(cellClass: AnyClass) -> Void {
+        self.cellClass = cellClass
+        coreView.register(self.cellClass, forCellWithReuseIdentifier: String(describing: self.cellClass))
+    }
+    
+    public func setAutoScrollTimeInterval(timeInterval: Float) -> Void {
+        self.autoScrollTimeInterval = timeInterval
+        self.createTimer()
+    }
+    
     public func setCurrentPageColor(color: UIColor) -> Void {
         self.pageControl.currentPageIndicatorTintColor = color
     }
@@ -133,6 +141,14 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     
     public func setDisableScroll(disableScroll: Bool) -> Void {
         self.coreView.isScrollEnabled = disableScroll
+    }
+    
+    public func benginAutoScroll() -> Void {
+        self.createTimer()
+    }
+    
+    public func endAutoScroll() -> Void {
+        self.invalidateTimer()
     }
     
     private func settingPageControlAlignment() -> Void {
@@ -173,19 +189,11 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         return carousel_data
     }
     
-    public func registerCarouselCell(cellClass: AnyClass) -> Void {
-        self.cellClass = cellClass
-        coreView.register(self.cellClass, forCellWithReuseIdentifier: NSStringFromClass(self.cellClass))
-    }
-    
-    public func setAutoScrollTimeInterval(timeInterval: Float) -> Void {
-        self.autoScrollTimeInterval = timeInterval
-        self.createTimer()
-    }
-    
     private func createTimer() -> Void {
-        timer = Timer.scheduledTimer(timeInterval: Double(self.autoScrollTimeInterval), target: self, selector: #selector(self.autoCarouselScroll), userInfo: nil, repeats: true)
-        RunLoop.main.add(timer!, forMode:RunLoopMode.commonModes)
+        self.invalidateTimer()
+        let timer = Timer.scheduledTimer(timeInterval: Double(self.autoScrollTimeInterval), target: self, selector: #selector(self.autoCarouselScroll), userInfo: nil, repeats: true)
+        self.timer = timer
+        RunLoop.main.add(timer, forMode:RunLoopMode.commonModes)
     }
     
     @objc func autoCarouselScroll() -> Void {
@@ -224,7 +232,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NSStringFromClass(cellClass), for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: self.cellClass), for: indexPath)
         self.delegate?.carouselForItemCell(carouselView: self, cell: cell, indexItem: self._carouselData[indexPath.row])
         return cell
     }
@@ -283,8 +291,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     }
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        timer.invalidate()
-        timer = nil
+        self.invalidateTimer()
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -293,8 +300,13 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         }
     }
     
-    deinit {
+    private func invalidateTimer() -> Void {
+        timer?.invalidate()
         timer = nil
+    }
+    
+    deinit {
+        self.invalidateTimer()
     }
     
 }

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,ZZCarouselDelegate{
     
     var tableView : UITableView!
+    var carousel : ZZCarouselView!
     
     
     override func viewDidLoad() {
@@ -25,6 +26,44 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         tableView.delegate = self
         self.view.addSubview(tableView)
         
+        self.instanceCarousel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        carousel.benginAutoScroll()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        carousel.endAutoScroll()
+    }
+    
+    func instanceCarousel() -> Void {
+        let data = ["http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/02/ChMkJ1bKxc6IWCE_AAv1GUaUIDYAALHbgFXFK8AC_Ux808.jpg", "http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIZep0AAU2iZgswEUAALHNgIwWqUABTah055.jpg", "http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJ1bKxOCISXDzAAifUTXHGcMAALHNgI1kUYACJ9p541.jpg","http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIHZvIAAU6HMJ3XvcAALHNgJBs5oABTo0258.jpg","http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIDZULAAMuVR0j3-MAALHNgJ_ws4AAy5t818.jpg"]
+        
+        carousel = ZZCarouselView.init(frame: CGRect(x: 0, y: 64, width: self.view.frame.size.width, height:150), direction: ZZCarouselScrollDirection.left)
+        carousel.registerCarouselCell(cellClass: Example1Cell.classForCoder())
+        
+        carousel.setCurrentPageColor(color: UIColor.orange)
+        carousel.setDefaultPageColor(color: UIColor.white)
+        carousel.delegate = self
+        carousel.setAutoScrollTimeInterval(timeInterval: 4)
+        carousel.setPageControlAlignment(alignment: ZZCarouselPageAlignment.center)
+        carousel.tag = 1001;
+        
+        carousel.setCarouselData(carouselData: data as [AnyObject])
+    }
+    
+    func carouselForItemCell(carouselView: ZZCarouselView, cell: AnyObject, indexItem: AnyObject) {
+        let cell1: Example1Cell = cell as! Example1Cell
+        cell1.loadWebImage(imageUrl:indexItem as! String)
+    }
+    
+    func carouselDidSelectItemAtIndex(carouselView: ZZCarouselView, index: Int) {
+        print(index)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,10 +100,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                 cell?.detailTextLabel?.text = "Class-:-Example4ViewController"
             }
         }
-        
-        
-        
-        
         return cell!
     }
     
@@ -94,8 +129,19 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                 self.navigationController?.pushViewController(ex1, animated: true)
             }
         }
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 150
+        }
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        
+        return section == 0 ? carousel : nil
     }
     
     override func didReceiveMemoryWarning() {

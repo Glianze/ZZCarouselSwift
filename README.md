@@ -16,22 +16,51 @@
 
 ### 方法说明
 
-```objective-c
-// 注册UICollectionviewCell，PS：必须实现的方法，如不实现肯定Crash
+注册UICollectionviewCell，PS：必须实现的方法，如不实现肯定Crash
+
+```
 registerCarouselCell(cellClass: AnyClass)
-// 设置自动滚动间隔时间
+```
+
+设置自动滚动间隔时间
+
+```
 setAutoScrollTimeInterval(timeInterval: Float)
-// 数据源，AnyObject类型
+```
+
+数据源，AnyObject类型。PS：必实现的方法。轮播中的所有数据都通过此方法来传递
+
+```
 setCarouselData(carouselData: [AnyObject])
-// UIPageControl 颜色
+```
+
+UIPageControl Default颜色
+
+```
 setDefaultPageColor(color: UIColor)
-// UIPageControl 颜色
+```
+
+UIPageControl Current颜色
+
+```
 setCurrentPageColor(color: UIColor)
-// UIPageControl 对齐方式 ， 枚举类型：左、中、右
+```
+
+设置UIPageControl 对齐方式 ， 枚举类型：左、中、右
+
+```
 setPageControlAlignment(alignment: ZZCarouselPageAlignment)
-// 是否隐藏PageControl
+```
+
+设置是否隐藏PageControl。PS：通常在文字轮播中设置此方法
+
+```
 setHiddenPageControl(hidden: Bool)
-// 是否关闭滚动手势，一般在纯文字的情况下调用此方法
+```
+
+是否关闭滚动手势，PS：一般在文字轮播的情况下调用此方法
+
+```
 setDisableScroll(disableScroll: Bool)
 ```
 
