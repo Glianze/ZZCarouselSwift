@@ -45,7 +45,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         let data = ["http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/02/ChMkJ1bKxc6IWCE_AAv1GUaUIDYAALHbgFXFK8AC_Ux808.jpg", "http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIZep0AAU2iZgswEUAALHNgIwWqUABTah055.jpg", "http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJ1bKxOCISXDzAAifUTXHGcMAALHNgI1kUYACJ9p541.jpg","http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIHZvIAAU6HMJ3XvcAALHNgJBs5oABTo0258.jpg","http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIDZULAAMuVR0j3-MAALHNgJ_ws4AAy5t818.jpg"]
         
         carousel = ZZCarouselView.init(frame: CGRect(x: 0, y: 64, width: self.view.frame.size.width, height:150), direction: ZZCarouselScrollDirection.left)
-        carousel.registerCarouselCell(cellClass: Example1Cell.classForCoder())
+        carousel.registerCarouselCell(cellClass: Example1Cell.self)
         
         carousel.setCurrentPageColor(color: UIColor.orange)
         carousel.setDefaultPageColor(color: UIColor.white)

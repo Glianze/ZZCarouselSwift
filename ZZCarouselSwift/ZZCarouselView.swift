@@ -34,13 +34,13 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     private var autoScrollTimeInterval : Float!
     private var scrollDirection : ZZCarouselScrollDirection!
     private var pageControlAlignment : ZZCarouselPageAlignment!
-    private var hiddenPageControl : Bool!
+    private var hiddenPageControl : Bool?
     private var currentPageColor : UIColor?
-    private var defaultPageColor : UIColor!
+    private var defaultPageColor : UIColor?
     
     private var coreView : UICollectionView!
     private var pageControl : UIPageControl!
-    var backgroundView : UIImageView!
+    var backgroundView : UIImageView?
     private var this_width : Int!
     private var this_height : Int!
     
@@ -75,10 +75,10 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     
     private func makeCoreUI(direction: ZZCarouselScrollDirection) -> Void {
         backgroundView = UIImageView.init(frame: CGRect(x:0.0 ,y: 0.0, width: CGFloat(this_width), height: CGFloat(this_height)))
-        backgroundView.layer.masksToBounds = true
-        backgroundView.layer.borderWidth = 0
-        self.backgroundView.contentMode = UIViewContentMode.scaleToFill
-        self.addSubview(backgroundView)
+        backgroundView?.layer.masksToBounds = true
+        backgroundView?.layer.borderWidth = 0
+        backgroundView?.contentMode = UIViewContentMode.scaleToFill
+        self.addSubview(backgroundView!)
         
         let flowLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         flowLayout.itemSize = CGSize(width: this_width, height: this_height)
