@@ -151,6 +151,10 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.invalidateTimer()
     }
     
+    public func reloadData() -> Void {
+        self.coreView.reloadData()
+    }
+    
     private func settingPageControlAlignment() -> Void {
         let pointSize : CGSize = pageControl.size(forNumberOfPages: _carouselData.count)
         var page_x : Float = 0.0
