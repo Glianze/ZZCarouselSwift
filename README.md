@@ -4,6 +4,12 @@
 
 ![ZZCarouselSwift](ZZCarouselSwift.gif)
 
+### 更新内容
+
+* 添加数据源等于1的情况判断。隐藏pagecontrol，禁用自动滚动
+* 添加主动刷新的reloaddata 方法。
+* 添加主动开始/停止轮播器的方法
+
 ### 轮播器优势：
 
 - 基于UICollectionView，真无限轮播器

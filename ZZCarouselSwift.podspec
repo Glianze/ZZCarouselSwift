@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZZCarouselSwift"
-  s.version      = "1.0.7"
-  s.summary      = "1.0.7 add begin and end func"
+  s.version      = "1.1.0"
+  s.summary      = "1.1.0 core func update"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
