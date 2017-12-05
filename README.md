@@ -7,8 +7,10 @@
 ### 更新内容
 
 * 添加数据源等于1的情况判断。隐藏pagecontrol，禁用自动滚动
-* 添加主动刷新的reloaddata 方法。
+* 添加主动刷新的reloaddata 方法
 * 添加主动开始/停止轮播器的方法
+* 添加关闭自动滚动方法
+* 变更定时器启动位置
 
 ### 轮播器优势：
 
@@ -25,49 +27,55 @@
 注册UICollectionviewCell，PS：必须实现的方法，如不实现肯定Crash
 
 ```
-registerCarouselCell(cellClass: AnyClass)
+func registerCarouselCell(cellClass: AnyClass)
 ```
 
 设置自动滚动间隔时间
 
 ```
-setAutoScrollTimeInterval(timeInterval: Float)
+func setAutoScrollTimeInterval(timeInterval: Float)
 ```
 
 数据源，AnyObject类型。PS：必实现的方法。轮播中的所有数据都通过此方法来传递
 
 ```
-setCarouselData(carouselData: [AnyObject])
+func setCarouselData(carouselData: [AnyObject])
 ```
 
 UIPageControl Default颜色
 
 ```
-setDefaultPageColor(color: UIColor)
+func setDefaultPageColor(color: UIColor)
 ```
 
 UIPageControl Current颜色
 
 ```
-setCurrentPageColor(color: UIColor)
+func setCurrentPageColor(color: UIColor)
 ```
 
 设置UIPageControl 对齐方式 ， 枚举类型：左、中、右
 
 ```
-setPageControlAlignment(alignment: ZZCarouselPageAlignment)
+func setPageControlAlignment(alignment: ZZCarouselPageAlignment)
 ```
 
 设置是否隐藏PageControl。PS：通常在文字轮播中设置此方法
 
 ```
-setHiddenPageControl(hidden: Bool)
+func setHiddenPageControl(hidden: Bool)
 ```
 
 是否关闭滚动手势，PS：一般在文字轮播的情况下调用此方法
 
 ```
-setDisableScroll(disableScroll: Bool)
+func setDisableScroll(disableScroll: Bool)
+```
+
+是否关闭自动滚动
+
+```
+func setIsAutoScroll(isAutoScroll: Bool)
 ```
 
 ### 枚举说明

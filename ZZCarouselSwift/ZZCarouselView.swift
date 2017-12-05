@@ -37,6 +37,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     private var hiddenPageControl : Bool?
     private var currentPageColor : UIColor?
     private var defaultPageColor : UIColor?
+    private var isAutoScroll : Bool?
     
     private var coreView : UICollectionView!
     private var pageControl : UIPageControl!
@@ -67,6 +68,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     private func instance() -> Void {
         autoScrollTimeInterval = 0
         pageControlAlignment = ZZCarouselPageAlignment.center
+        isAutoScroll = true
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -120,7 +122,6 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     
     public func setAutoScrollTimeInterval(timeInterval: Float) -> Void {
         self.autoScrollTimeInterval = timeInterval
-        self.createTimer()
     }
     
     public func setCurrentPageColor(color: UIColor) -> Void {
@@ -141,6 +142,10 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     
     public func setDisableScroll(disableScroll: Bool) -> Void {
         self.coreView.isScrollEnabled = disableScroll
+    }
+    
+    func setIsAutoScroll(isAutoScroll:Bool) -> Void {
+        self.isAutoScroll = isAutoScroll
     }
     
     public func benginAutoScroll() -> Void {
@@ -171,6 +176,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     public func setCarouselData(carouselData: [AnyObject]) -> Void {
         if !carouselData.isEmpty {
             _carouselData = self.remakeCarouselData(data: carouselData)
+            self.coreView.reloadData()
             if carouselData.count == 1 {
                 self.pageControl.isHidden = true
                 self.invalidateTimer()
@@ -178,8 +184,12 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
                 self.pageControl.numberOfPages = carouselData.count
                 self.settingPageControlAlignment()
                 self.defaultContentOffset()
+                self.createTimer()
             }
-            self.coreView.reloadData()
+            
+            if !self.isAutoScroll! {
+                self.invalidateTimer()
+            }
         }
     }
     
@@ -311,7 +321,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if autoScrollTimeInterval != 0.0 {
+        if autoScrollTimeInterval != 0.0 && isAutoScroll!{
             self.createTimer()
         }
     }
