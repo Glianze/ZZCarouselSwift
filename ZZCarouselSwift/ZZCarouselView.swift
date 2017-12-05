@@ -171,26 +171,38 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     public func setCarouselData(carouselData: [AnyObject]) -> Void {
         if !carouselData.isEmpty {
             _carouselData = self.remakeCarouselData(data: carouselData)
+            if carouselData.count == 1 {
+                self.pageControl.isHidden = true
+                self.invalidateTimer()
+            }else {
+                self.pageControl.numberOfPages = carouselData.count
+                self.settingPageControlAlignment()
+                self.defaultContentOffset()
+            }
             self.coreView.reloadData()
-            self.pageControl.numberOfPages = carouselData.count
         }
-        settingPageControlAlignment()
-        
+    }
+    
+    private func remakeCarouselData(data: [AnyObject]) -> [AnyObject] {
+        if data.count == 1 {
+            return data
+        } else {
+            var carousel_data : [AnyObject] = [AnyObject]()
+            carousel_data.append(data.last!)
+            for item in data {
+                carousel_data.append(item)
+            }
+            carousel_data.append(data.first!)
+            return carousel_data
+        }
+    }
+    
+    private func defaultContentOffset() -> Void {
         if scrollDirection == ZZCarouselScrollDirection.left || scrollDirection == ZZCarouselScrollDirection.right {
             self.coreView.contentOffset = CGPoint(x: this_width, y: 0)
         }else if scrollDirection == ZZCarouselScrollDirection.top || scrollDirection == ZZCarouselScrollDirection.bottom {
             self.coreView.contentOffset = CGPoint(x: 0, y: this_height)
         }
-    }
-    
-    private func remakeCarouselData(data: [AnyObject]) -> [AnyObject] {
-        var carousel_data : [AnyObject] = [AnyObject]()
-        carousel_data.append(data.last!)
-        for item in data {
-            carousel_data.append(item)
-        }
-        carousel_data.append(data.first!)
-        return carousel_data
     }
     
     private func createTimer() -> Void {

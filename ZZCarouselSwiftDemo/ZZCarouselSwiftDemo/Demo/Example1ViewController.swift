@@ -22,7 +22,7 @@ class Example1ViewController: UIViewController,ZZCarouselDelegate {
         let data = ["http://i1.douguo.net//upload/banner/0/6/a/06e051d7378040e13af03db6d93ffbfa.jpg", "http://i1.douguo.net//upload/banner/9/3/4/93f959b4e84ecc362c52276e96104b74.jpg", "http://i1.douguo.net//upload/banner/d/8/2/d89f438789ee1b381966c1361928cb32.jpg"]
         
         let carousel = ZZCarouselView.init(frame: CGRect(x: 0, y: 64, width: self.view.frame.size.width, height:self.view.frame.size.height / 3), direction: ZZCarouselScrollDirection.left)
-        carousel.registerCarouselCell(cellClass: Example1Cell.classForCoder())
+        carousel.registerCarouselCell(cellClass: Example1Cell.self)
 
         carousel.setCurrentPageColor(color: UIColor.red)
         carousel.setDefaultPageColor(color: UIColor.yellow)
