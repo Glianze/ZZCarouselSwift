@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = "The simplest shuffling, hope is helpful for all developers.The depth of support for custom cell."
 
-  s.homepage     = "https://github.com/ACEYL/ZZCarouselSwift"
+  s.homepage     = "https://github.com/Glianze/ZZCarouselSwift"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ACEYL/ZZCarouselSwift.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/Glianze/ZZCarouselSwift.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -115,7 +115,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  s.frameworks   = "Foundation","UIKit"
+  s.frameworks   = 'UIKit','Foundation'
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"
