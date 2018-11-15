@@ -219,7 +219,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.invalidateTimer()
         let timer = Timer.scheduledTimer(timeInterval: Double(self.autoScrollTimeInterval), target: self, selector: #selector(self.autoCarouselScroll), userInfo: nil, repeats: true)
         self.timer = timer
-        RunLoop.main.add(timer, forMode:RunLoop.Mode.common)
+        RunLoop.main.add(timer, forMode:RunLoopMode.commonModes)
     }
     
     @objc func autoCarouselScroll() -> Void {
