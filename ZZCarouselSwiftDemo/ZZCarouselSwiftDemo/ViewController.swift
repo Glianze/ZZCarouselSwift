@@ -21,7 +21,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         self.view.backgroundColor = UIColor.white
         
-        tableView = UITableView.init(frame: self.view.bounds, style: UITableViewStyle.grouped)
+        tableView = UITableView.init(frame: self.view.bounds, style: UITableView.Style.grouped)
         tableView.dataSource = self
         tableView.delegate = self
         self.view.addSubview(tableView)
@@ -77,7 +77,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if cell == nil {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
+            cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
         }
         
         if indexPath.section == 0 {

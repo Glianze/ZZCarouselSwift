@@ -79,7 +79,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         backgroundView = UIImageView.init(frame: CGRect(x:0.0 ,y: 0.0, width: CGFloat(this_width), height: CGFloat(this_height)))
         backgroundView?.layer.masksToBounds = true
         backgroundView?.layer.borderWidth = 0
-        backgroundView?.contentMode = UIViewContentMode.scaleToFill
+        backgroundView?.contentMode = UIView.ContentMode.scaleToFill
         self.addSubview(backgroundView!)
         
         let flowLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
@@ -88,9 +88,9 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         flowLayout.minimumInteritemSpacing = 0
         
         if direction == ZZCarouselScrollDirection.left || direction == ZZCarouselScrollDirection.right {
-            flowLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
+            flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         }else if direction == ZZCarouselScrollDirection.top || direction == ZZCarouselScrollDirection.bottom {
-            flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
+            flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
         }
         
         self.coreView = UICollectionView.init(frame: CGRect(x:0.0 ,y: 0.0, width: CGFloat(this_width), height: CGFloat(this_height)), collectionViewLayout: flowLayout)
@@ -101,7 +101,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.coreView.isPagingEnabled = true
         self.coreView.backgroundColor = UIColor.clear
         if #available(iOS 11.0, *) {
-            self.coreView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
+            self.coreView.contentInsetAdjustmentBehavior = UIScrollView.ContentInsetAdjustmentBehavior.never
         } else {
             // Fallback on earlier versions
         }
@@ -219,7 +219,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         self.invalidateTimer()
         let timer = Timer.scheduledTimer(timeInterval: Double(self.autoScrollTimeInterval), target: self, selector: #selector(self.autoCarouselScroll), userInfo: nil, repeats: true)
         self.timer = timer
-        RunLoop.main.add(timer, forMode:RunLoopMode.commonModes)
+        RunLoop.main.add(timer, forMode:RunLoop.Mode.common)
     }
     
     @objc func autoCarouselScroll() -> Void {
