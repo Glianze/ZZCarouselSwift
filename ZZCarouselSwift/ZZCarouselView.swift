@@ -9,8 +9,8 @@
 import UIKit
 
 public protocol ZZCarouselDelegate:class {
-    func carouselForItemCell(carouselView:ZZCarouselView, cell:AnyObject, indexItem:AnyObject) -> Void
-    func carouselDidSelectItemAtIndex(carouselView:ZZCarouselView, index: Int) -> Void
+    func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) -> Void
+    func carouselDidSelectItemAtIndex(carouselView: ZZCarouselView, index: Int) -> Void
 }
 
 public enum ZZCarouselPageAlignment{
@@ -42,16 +42,16 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     private var coreView : UICollectionView!
     private var pageControl : UIPageControl!
     var backgroundView : UIImageView?
-    private var this_width : Int!
-    private var this_height : Int!
+    private var this_width : CGFloat!
+    private var this_height : CGFloat!
     
     public weak var delegate : ZZCarouselDelegate?
     
     public init(frame: CGRect, direction: ZZCarouselScrollDirection) {
         super.init(frame: frame)
         
-        this_width = Int(frame.size.width)
-        this_height = Int(frame.size.height)
+        this_width = frame.size.width
+        this_height = frame.size.height
         
         self.scrollDirection = direction
         
@@ -62,7 +62,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     }
     
     private func resettingSelfFrame(frame: CGRect) -> Void {
-        self.frame = CGRect(x: frame.origin.x,y: frame.origin.y, width: CGFloat(this_width), height: CGFloat(this_height))
+        self.frame = CGRect(x: frame.origin.x,y: frame.origin.y, width: this_width, height: this_height)
     }
     
     private func instance() -> Void {
@@ -84,8 +84,8 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
         
         let flowLayout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         flowLayout.itemSize = CGSize(width: this_width, height: this_height)
-        flowLayout.minimumLineSpacing = 0
-        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0.0
+        flowLayout.minimumInteritemSpacing = 0.0
         
         if direction == ZZCarouselScrollDirection.left || direction == ZZCarouselScrollDirection.right {
             flowLayout.scrollDirection = UICollectionView.ScrollDirection.horizontal
@@ -93,7 +93,7 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
             flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
         }
         
-        self.coreView = UICollectionView.init(frame: CGRect(x:0.0 ,y: 0.0, width: CGFloat(this_width), height: CGFloat(this_height)), collectionViewLayout: flowLayout)
+        self.coreView = UICollectionView.init(frame: CGRect(x:0.0 ,y: 0.0, width: this_width, height: this_height), collectionViewLayout: flowLayout)
         self.coreView.showsHorizontalScrollIndicator = false
         self.coreView.showsVerticalScrollIndicator = false
         self.coreView.dataSource = self
@@ -110,8 +110,9 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     }
     
     private func makePageControlUI(frame: CGRect) -> Void {
-        self.pageControl = UIPageControl.init(frame: CGRect(x:0.0 ,y: CGFloat(this_height - 20), width: CGFloat(this_width), height: 20.0))
+        self.pageControl = UIPageControl.init(frame: CGRect(x:0.0 ,y: this_height - 20.0, width: this_width, height: 20.0))
         self.pageControl.backgroundColor = UIColor.clear
+        self.pageControl.isUserInteractionEnabled = false
         self.addSubview(self.pageControl)
     }
     
@@ -162,11 +163,11 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     
     private func settingPageControlAlignment() -> Void {
         let pointSize : CGSize = pageControl.size(forNumberOfPages: _carouselData.count)
-        var page_x : Float = 0.0
+        var page_x : CGFloat = 0.0
         if (pageControlAlignment == ZZCarouselPageAlignment.left) {
-            page_x = Float((pageControl.bounds.size.width - pointSize.width) / 2) ;
+            page_x = (pageControl.bounds.size.width - pointSize.width) / 2.0
         }else if (pageControlAlignment == ZZCarouselPageAlignment.right){
-            page_x = Float(-(pageControl.bounds.size.width - pointSize.width) / 2) ;
+            page_x = -(pageControl.bounds.size.width - pointSize.width) / 2.0
         }else if (pageControlAlignment == ZZCarouselPageAlignment.center){
             page_x = 0;
         }
@@ -259,7 +260,10 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: self.cellClass), for: indexPath)
-        self.delegate?.carouselForItemCell(carouselView: self, cell: cell, indexItem: self._carouselData[indexPath.row])
+        if self.delegate != nil {
+            self.delegate!.carouselForItemCell(carouselView: self, cell: cell, indexItem: self._carouselData[indexPath.row])
+        }
+        
         return cell
     }
     
@@ -279,16 +283,16 @@ open class ZZCarouselView: UIView,UICollectionViewDataSource,UICollectionViewDel
     private func carouselHorizontalDidScroll(scrollView: UIScrollView) -> Void {
         if scrollView.contentOffset.x <= 0 {
             scrollView.contentOffset = CGPoint(x: Int(this_width) * (_carouselData.count - 2), y: 0);
-        } else if Float(scrollView.contentOffset.x) >= Float(this_width) * (Float(_carouselData.count - 1)) {
+        } else if scrollView.contentOffset.x >= this_width * CGFloat(_carouselData.count - 1) {
             scrollView.contentOffset = CGPoint(x: Int(this_width), y: 0);
         }
     }
     
     private func carouselVerticalDidScroll(scrollView: UIScrollView) -> Void {
         if scrollView.contentOffset.y <= 0 {
-            scrollView.contentOffset = CGPoint(x: 0, y: this_height * (_carouselData.count - 2))
-        } else if Float(scrollView.contentOffset.y) >= Float(this_height) * (Float(_carouselData.count - 1)) {
-            scrollView.contentOffset = CGPoint(x: CGFloat(0), y: CGFloat(this_height));
+            scrollView.contentOffset = CGPoint(x: 0, y: this_height * CGFloat(_carouselData.count - 2))
+        } else if scrollView.contentOffset.y >= this_height * CGFloat(_carouselData.count - 1) {
+            scrollView.contentOffset = CGPoint(x: CGFloat(0), y: this_height);
         }
     }
     

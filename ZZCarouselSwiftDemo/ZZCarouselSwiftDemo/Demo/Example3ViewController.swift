@@ -38,7 +38,7 @@ class Example3ViewController: UIViewController,ZZCarouselDelegate {
         self.view.addSubview(carousel)
     }
     
-    func carouselForItemCell(carouselView: ZZCarouselView, cell: AnyObject, indexItem: AnyObject) {
+    func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) {
         let cell1: Example3Cell = cell as! Example3Cell
         cell1.loadData(model: indexItem as! Dictionary<String, AnyObject>)
     }

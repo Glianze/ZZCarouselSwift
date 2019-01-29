@@ -42,7 +42,7 @@ class Example4ViewController: UIViewController,ZZCarouselDelegate {
         
     }
     
-    func carouselForItemCell(carouselView: ZZCarouselView, cell: AnyObject, indexItem: AnyObject) {
+    func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) {
         let cell1: Example4TaobaoCell = cell as! Example4TaobaoCell
 
         

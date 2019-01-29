@@ -48,7 +48,7 @@ class ExampleViewController: UIViewController,ZZCarouselDelegate {
         self.view.addSubview(carousel1)
     }
     
-    func carouselForItemCell(carouselView: ZZCarouselView, cell: AnyObject, indexItem: AnyObject) {
+    func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) {
         if cell.isKind(of: ExampleCell.self) {
             let cell1: ExampleCell = cell as! ExampleCell
             cell1.loadImage(image: indexItem as! UIImage)

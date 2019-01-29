@@ -57,7 +57,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         carousel.setCarouselData(carouselData: data as [AnyObject])
     }
     
-    func carouselForItemCell(carouselView: ZZCarouselView, cell: AnyObject, indexItem: AnyObject) {
+    func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) {
         let cell1: Example1Cell = cell as! Example1Cell
         cell1.loadWebImage(imageUrl:indexItem as! String)
     }
