@@ -43,11 +43,11 @@ class ExampleViewController: UIViewController, ZZCarouselDelegate {
         carousel.setCarouselData(carouselData: data)
         carousel.tag = 1001
         
+        carousel1.registerCarouselCell(cellClass: ExampleCell.classForCoder())
         carousel1.delegate = self
         carousel1.setAutoScrollTimeInterval(timeInterval: 2)
         carousel1.setCarouselData(carouselData: data)
         
-        carousel1.registerCarouselCell(cellClass: ExampleCell.classForCoder())
         carousel1.setPageControlAlignment(alignment: ZZCarouselPageAlignment.right)
         carousel1.tag = 1002
         
