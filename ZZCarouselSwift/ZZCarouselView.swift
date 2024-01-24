@@ -227,23 +227,31 @@ open class ZZCarouselView: UIView {
     }
     
     private func settingPageControlAlignment() {
-//        let pointSize: CGSize = pageControl.size(forNumberOfPages: _carouselData.count)
-//        var page_x: CGFloat = 0.0
+        var page_x: CGFloat = 0.0
         var constraints = self.constraints
         
         if let index = constraints.firstIndex(where: {$0.identifier == "pageControlConstraints"}) {
+            NSLayoutConstraint.deactivate(constraints)
+            
             if pageControlAlignment == ZZCarouselPageAlignment.left {
-                constraints[index] = NSLayoutConstraint(item: pageControl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+                page_x = 5
             } else if pageControlAlignment == ZZCarouselPageAlignment.right {
-                constraints[index] = NSLayoutConstraint(item: pageControl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+                page_x = -(5)
+            }
+            
+            if pageControlAlignment == ZZCarouselPageAlignment.left {
+                constraints[index] = NSLayoutConstraint(item: pageControl, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: page_x)
+            } else if pageControlAlignment == ZZCarouselPageAlignment.right {
+                constraints[index] = NSLayoutConstraint(item: pageControl, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: page_x)
             } else if pageControlAlignment == ZZCarouselPageAlignment.center {
                 constraints[index] = NSLayoutConstraint(item: pageControl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
             } else {
-                
+                constraints[index] = NSLayoutConstraint(item: pageControl, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
             }
             constraints[index].identifier = "pageControlConstraints"
             NSLayoutConstraint.activate(constraints)
-//            self.layoutIfNeeded()
+            pageControl.layoutIfNeeded()
+            self.layoutIfNeeded()
         }
         
     }
