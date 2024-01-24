@@ -10,7 +10,10 @@ import UIKit
 
 class Example1ViewController: UIViewController,ZZCarouselDelegate {
 
-    
+    private lazy var carousel: ZZCarouselView = {
+        let carousel = ZZCarouselView(width: self.view.frame.size.width, direction: .left)
+        return carousel
+    }()
 
 
     override func viewDidLoad() {
@@ -20,9 +23,9 @@ class Example1ViewController: UIViewController,ZZCarouselDelegate {
         // Do any additional setup after loading the view.
         
         let data = ["http://i1.douguo.net//upload/banner/0/6/a/06e051d7378040e13af03db6d93ffbfa.jpg", "http://i1.douguo.net//upload/banner/9/3/4/93f959b4e84ecc362c52276e96104b74.jpg", "http://i1.douguo.net//upload/banner/d/8/2/d89f438789ee1b381966c1361928cb32.jpg"]
-
+        setupView()
+        setupConstraints()
         
-        let carousel = ZZCarouselView.init(frame: CGRect(x: 0, y: 64, width: self.view.frame.size.width, height:self.view.frame.size.height / 3), direction: ZZCarouselScrollDirection.left)
         carousel.registerCarouselCell(cellClass: Example1Cell.self)
 
         carousel.setCurrentPageColor(color: UIColor.red)
@@ -35,6 +38,26 @@ class Example1ViewController: UIViewController,ZZCarouselDelegate {
         
         
         carousel.setCarouselData(carouselData: data as [AnyObject])
+    }
+    
+    private func setupView() {
+        self.view.addSubview(carousel)
+    }
+    
+    private func setupConstraints() {
+        let views: [String: Any] = ["carousel": carousel]
+        var constraints: [NSLayoutConstraint] = []
+        
+        carousel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let v_content = "V:|-[carousel]"
+        let h_carousel = "H:|-0-[carousel]-0-|"
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: v_content, options: .alignAllLeading, metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: h_carousel, options: .alignAllTop, metrics: nil, views: views)
+        constraints += [NSLayoutConstraint(item: carousel, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1/3, constant: 0)]
+        
+        NSLayoutConstraint.activate(constraints)
+        
     }
     
     func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) {

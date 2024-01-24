@@ -10,32 +10,57 @@ import UIKit
 
 class Example3ViewController: UIViewController,ZZCarouselDelegate {
     
-    
+    private lazy var carousel: ZZCarouselView = {
+        let carousel = ZZCarouselView(direction: .left)
+        return carousel
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
  
         self.view.backgroundColor = UIColor.white
         
+        setupView()
+        setupConstraints()
+        
         let data = [
-            ["title":"标题1","image":UIImage(named:"zz1.jpg") as Any],
-            ["title":"标题2","image":UIImage(named:"zz2.jpg") as Any],
-            ["title":"标题3","image":UIImage(named:"zz3.jpg") as Any],
-            ["title":"标题4","image":UIImage(named:"zz4.jpg") as Any],
-            ["title":"标题5","image":UIImage(named:"zz5.jpg") as Any],
+            ["title": "标题1","image": UIImage(named:"zz1.jpg") as Any],
+            ["title": "标题2","image": UIImage(named:"zz2.jpg") as Any],
+            ["title": "标题3","image": UIImage(named:"zz3.jpg") as Any],
+            ["title": "标题4","image": UIImage(named:"zz4.jpg") as Any],
+            ["title": "标题5","image": UIImage(named:"zz5.jpg") as Any],
         ]
         
-        let carousel = ZZCarouselView.init(frame: CGRect(x: 0, y: 64, width: self.view.frame.size.width, height:self.view.frame.size.height / 3), direction: ZZCarouselScrollDirection.left)
         carousel.registerCarouselCell(cellClass: Example3Cell.classForCoder())
         
         carousel.setCurrentPageColor(color: UIColor.red)
         carousel.setDefaultPageColor(color: UIColor.yellow)
         carousel.delegate = self
-        carousel.setAutoScrollTimeInterval(timeInterval: 2)
+//        carousel.setAutoScrollTimeInterval(timeInterval: 2)
+        carousel.setIsAutoScroll(isAutoScroll: false)
         carousel.setPageControlAlignment(alignment: ZZCarouselPageAlignment.right)
         carousel.setCarouselData(carouselData: data as [AnyObject])
-        carousel.tag = 1001;
+        carousel.tag = 1001
+    }
+    
+    private func setupView() {
         self.view.addSubview(carousel)
+    }
+    
+    private func setupConstraints() {
+        let views: [String: Any] = ["carousel": carousel]
+        var constraints: [NSLayoutConstraint] = []
+        
+        carousel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let v_content = "V:|-[carousel]"
+        let h_carousel = "H:|-0-[carousel]-0-|"
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: v_content, options: .alignAllLeading, metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: h_carousel, options: .alignAllTop, metrics: nil, views: views)
+        constraints += [NSLayoutConstraint(item: carousel, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1/3, constant: 0)]
+        
+        NSLayoutConstraint.activate(constraints)
+        
     }
     
     func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) {
