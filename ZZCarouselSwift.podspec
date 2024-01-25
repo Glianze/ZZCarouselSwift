@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZZCarouselSwift"
-  s.version      = "1.2.1"
+  s.version      = "1.2.3"
   s.summary      = "1.2.1 Major update"
 
   # This description is used to generate tags and improve search results.
