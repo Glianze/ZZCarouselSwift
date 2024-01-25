@@ -9,8 +9,10 @@
 import UIKit
 
 public protocol ZZCarouselDelegate:class {
-    func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject) -> Void
-    func carouselDidSelectItemAtIndex(carouselView: ZZCarouselView, index: Int) -> Void
+    func carouselForItemCell(carouselView: ZZCarouselView, cell: UICollectionViewCell, indexItem: AnyObject)
+    func carouselDidSelectItemAtIndex(carouselView: ZZCarouselView, index: Int)
+    func totalItemPagger(total: Int)
+    func updatePaggerPosition(index: Int)
 }
 
 public enum ZZCarouselPageAlignment{
@@ -265,9 +267,11 @@ open class ZZCarouselView: UIView {
                 
                 if carouselData.count == 1 {
                     self?.pageControl.isHidden = true
+                    self?.delegate?.totalItemPagger(total: 1)
                     self?.invalidateTimer()
                 } else {
                     self?.pageControl.numberOfPages = carouselData.count
+                    self?.delegate?.totalItemPagger(total: carouselData.count)
                     self?.settingPageControlAlignment()
                     self?.defaultContentOffset()
                     self?.createTimer()
@@ -275,6 +279,7 @@ open class ZZCarouselView: UIView {
                 
                 if let curentPage = self?.fetchCurrentPage() {
                     self?.pageControl.currentPage = curentPage
+                    self?.delegate?.updatePaggerPosition(index: curentPage)
                 }
                 
                 if !(self?.isAutoScroll ?? false) {
@@ -454,7 +459,9 @@ extension ZZCarouselView: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.pageControl.currentPage = fetchCurrentPage()
+        let index = fetchCurrentPage()
+        self.pageControl.currentPage = index
+        self.delegate?.updatePaggerPosition(index: index)
         if scrollDirection == ZZCarouselScrollDirection.left || scrollDirection == ZZCarouselScrollDirection.right {
             self.carouselHorizontalDidScroll(scrollView: scrollView)
         } else if scrollDirection == ZZCarouselScrollDirection.top || scrollDirection == ZZCarouselScrollDirection.bottom {

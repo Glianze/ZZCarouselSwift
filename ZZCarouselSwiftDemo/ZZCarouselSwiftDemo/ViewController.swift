@@ -89,6 +89,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print(index)
     }
     
+    func totalItemPagger(total: Int) {
+        print("totalItemPagger(total:) \(total)")
+    }
+    
+    func updatePaggerPosition(index: Int) {
+        print("updatePaggerPosition(index:) \(index)")
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

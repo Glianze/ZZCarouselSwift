@@ -92,6 +92,14 @@ class Example2ViewController: UIViewController,ZZCarouselDelegate {
         
     }
     
+    func totalItemPagger(total: Int) {
+        
+    }
+    
+    func updatePaggerPosition(index: Int) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

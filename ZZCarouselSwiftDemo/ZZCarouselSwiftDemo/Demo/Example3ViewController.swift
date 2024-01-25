@@ -71,6 +71,14 @@ class Example3ViewController: UIViewController,ZZCarouselDelegate {
     func carouselDidSelectItemAtIndex(carouselView: ZZCarouselView, index: Int) {
         
     }
+    
+    func totalItemPagger(total: Int) {
+        
+    }
+    
+    func updatePaggerPosition(index: Int) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
