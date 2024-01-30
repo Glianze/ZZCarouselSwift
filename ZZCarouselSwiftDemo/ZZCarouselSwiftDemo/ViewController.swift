@@ -8,10 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,ZZCarouselDelegate{
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ZZCarouselDelegate{
     
-    var tableView : UITableView!
-    var carousel : ZZCarouselView!
+    private let tableView : UITableView = {
+        let table = UITableView(frame: .zero, style: .grouped)
+        return table
+    }()
+    
+    private lazy var carousel : ZZCarouselView = {
+        let carousel = ZZCarouselView(width: self.view.frame.size.width, direction: .left)
+        return carousel
+    }()
     
     
     override func viewDidLoad() {
@@ -20,8 +27,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.title = "ZZCarouselSwift"
         
         self.view.backgroundColor = UIColor.white
+        setupView()
+        setupConstraits()
         
-        tableView = UITableView.init(frame: self.view.bounds, style: UITableView.Style.grouped)
         tableView.dataSource = self
         tableView.delegate = self
         self.view.addSubview(tableView)
@@ -41,10 +49,25 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         carousel.endAutoScroll()
     }
     
+    private func setupView() {
+        self.view.addSubview(tableView)
+    }
+    
+    private func setupConstraits() {
+        let views: [String: Any] = ["tableView": tableView]
+        var constraints: [NSLayoutConstraint] = []
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        let v_tableView = "V:|-[tableView]-|"
+        let h_tableView = "H:|-0-[tableView]-0-|"
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: v_tableView, options: .alignAllLeading, metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: h_tableView, options: .alignAllTop, metrics: nil, views: views)
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
     func instanceCarousel() -> Void {
         let data = ["http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/02/ChMkJ1bKxc6IWCE_AAv1GUaUIDYAALHbgFXFK8AC_Ux808.jpg", "http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIZep0AAU2iZgswEUAALHNgIwWqUABTah055.jpg", "http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJ1bKxOCISXDzAAifUTXHGcMAALHNgI1kUYACJ9p541.jpg","http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIHZvIAAU6HMJ3XvcAALHNgJBs5oABTo0258.jpg","http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/02/01/ChMkJlbKxOCIDZULAAMuVR0j3-MAALHNgJ_ws4AAy5t818.jpg"]
         
-        carousel = ZZCarouselView.init(frame: CGRect(x: 0, y: 64, width: self.view.frame.size.width, height:150), direction: ZZCarouselScrollDirection.left)
         carousel.registerCarouselCell(cellClass: Example1Cell.self)
         
         carousel.setCurrentPageColor(color: UIColor.orange)
@@ -64,6 +87,14 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func carouselDidSelectItemAtIndex(carouselView: ZZCarouselView, index: Int) {
         print(index)
+    }
+    
+    func totalItemPagger(total: Int) {
+        print("totalItemPagger(total:) \(total)")
+    }
+    
+    func updatePaggerPosition(index: Int) {
+        print("updatePaggerPosition(index:) \(index)")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,10 +144,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             if indexPath.row == 0 {
                 let ex = ExampleViewController()
                 self.navigationController?.pushViewController(ex, animated: true)
-            }else if indexPath.row == 1 {
+            } else if indexPath.row == 1 {
                 let ex1 = Example1ViewController()
                 self.navigationController?.pushViewController(ex1, animated: true)
-            }else if indexPath.row == 2 {
+            } else if indexPath.row == 2 {
                 let ex1 = Example3ViewController()
                 self.navigationController?.pushViewController(ex1, animated: true)
             }
@@ -124,7 +155,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             if indexPath.row == 0 {
                 let ex1 = Example2ViewController()
                 self.navigationController?.pushViewController(ex1, animated: true)
-            }else if indexPath.row == 1 {
+            } else if indexPath.row == 1 {
                 let ex1 = Example4ViewController()
                 self.navigationController?.pushViewController(ex1, animated: true)
             }
@@ -141,7 +172,12 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        return section == 0 ? carousel : nil
+        if section == 0 {
+            carousel.sizeToFit()
+            return carousel
+        } else {
+            return nil
+        }
     }
     
     override func didReceiveMemoryWarning() {
